@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.create(name: params[:name], image: params[:image], cart_id: params[:cart], category_id: params[:category])
-        redirect_to 'http://localhost:3001/items'
+        render json: @item, include: :category
+        # redirect_to 'http://localhost:3001/items'
     end
 
     def destroy 
