@@ -1,26 +1,26 @@
 class CartsController < ApplicationController
-    def index 
-        @carts = Cart.all
-        render json: @carts
-     end 
- 
-     def show
-        @cart = Cart.find(params[:id])
-        render json: @cart
-     end 
-     
-     def update
-        @cart = Cart.find(params[:id])
-        @cart.update(item: params[:item])
-        render json: @cart, status: :accepted 
+   def index 
+       @carts = Cart.all
+       render json: @carts
+    end 
 
-        redirect_to 'http://localhost:3001/checkout.html'
-     end
+    def show
+       @cart = Cart.find(params[:id])
+       render json: @cart
+    end 
+    
+    def update
+       @cart = Cart.find(params[:id])
+       @cart.update(item: params[:item])
+       render json: @cart, status: :accepted 
 
-     def destroy 
-        @cart = Cart.find(params[:id])
-        @cart.destroy 
+       redirect_to 'http://localhost:3001/checkout.html'
+    end
 
-        render status: :no_content
-     end 
+    def destroy 
+       @cart = Cart.find(params[:id])
+       @cart.destroy 
+
+       render status: :no_content
+    end 
 end
